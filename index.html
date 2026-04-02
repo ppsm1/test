@@ -14,24 +14,24 @@
         .category-title { font-size: 1.4rem; color: #3b82f6; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 2px solid #334155; display: flex; align-items: center; gap: 12px; font-weight: 600; }
         .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
         
-        /* Card Style */
         .card { background: #1e293b; border: 2px solid #334155; border-radius: 12px; padding: 18px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: visible; }
         .card:hover { transform: translateY(-5px); border-color: #64748b; box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
         
-        .card.role-dom { border-color: #ef4444; background: rgba(239, 68, 68, 0.1); }
-        .card.role-sub { border-color: #6366f1; background: rgba(99, 102, 241, 0.1); }
-        .card.role-switch { border-color: #10b981; background: rgba(16, 185, 129, 0.1); }
+        /* สีกรอบตอนเลือก: สีสำหรับ Action (Dom/Sub) และ สีสำหรับ Gear (Partner/Self) */
+        .card.role-dom, .card.role-partner { border-color: #ef4444; background: rgba(239, 68, 68, 0.1); }
+        .card.role-sub, .card.role-self { border-color: #6366f1; background: rgba(99, 102, 241, 0.1); }
+        .card.role-switch, .card.role-both { border-color: #10b981; background: rgba(16, 185, 129, 0.1); }
         
         .role-badge { position: absolute; top: -10px; right: -10px; padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; color: white; display: none; box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 10; }
-        .card.role-dom .role-badge { display: block; background: #ef4444; }
-        .card.role-sub .role-badge { display: block; background: #6366f1; }
-        .card.role-switch .role-badge { display: block; background: #10b981; }
+        .card.role-dom .role-badge, .card.role-partner .role-badge { display: block; background: #ef4444; }
+        .card.role-sub .role-badge, .card.role-self .role-badge { display: block; background: #6366f1; }
+        .card.role-switch .role-badge, .card.role-both .role-badge { display: block; background: #10b981; }
 
         .card-icon { font-size: 2.5rem; margin-bottom: 10px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
         .card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; color: #f1f5f9; }
         .card-desc { font-size: 0.8rem; color: #94a3b8; line-height: 1.4; }
 
-        /* Modal Popup */
+        /* Modal */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; justify-content: center; align-items: center; z-index: 2000; backdrop-filter: blur(8px); }
         .modal-box { background: #1e293b; padding: 30px; border-radius: 20px; width: 90%; max-width: 420px; text-align: center; border: 1px solid #475569; animation: popIn 0.3s ease-out; }
         @keyframes popIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -39,19 +39,19 @@
         .modal-title { font-size: 1.6rem; color: #f8fafc; margin-bottom: 8px; font-weight: bold; }
         .modal-question { color: #94a3b8; margin-bottom: 25px; font-size: 1rem; }
         
-        .btn-role { width: 100%; padding: 16px; margin-bottom: 12px; border: none; border-radius: 12px; font-size: 1.1rem; cursor: pointer; font-family: 'Prompt', sans-serif; font-weight: 600; transition: 0.2s; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .btn-role { width: 100%; padding: 16px; margin-bottom: 12px; border: none; border-radius: 12px; font-size: 1.1rem; cursor: pointer; font-family: 'Prompt', sans-serif; font-weight: 600; transition: 0.2s; color: white; }
         .btn-role:hover { filter: brightness(1.2); transform: translateY(-2px); }
-        .btn-r-dom { background: #ef4444; }
-        .btn-r-sub { background: #6366f1; }
+        .btn-r-top { background: #ef4444; }
+        .btn-r-bottom { background: #6366f1; }
         .btn-r-switch { background: #10b981; }
         .btn-r-remove { background: #334155; color: #cbd5e1; border: 1px solid #475569; margin-top: 10px; }
 
         /* Sticky Footer */
         .sticky-footer { position: fixed; bottom: 0; width: 100%; background: rgba(15, 23, 42, 0.95); border-top: 1px solid #334155; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; z-index: 1000; backdrop-filter: blur(10px); }
         .selection-info { font-size: 1.1rem; font-weight: 500; }
-        .btn-next { background: #3b82f6; color: white; border: none; padding: 14px 40px; border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; font-family: 'Prompt', sans-serif; transition: 0.3s; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); }
+        .btn-next { background: #3b82f6; color: white; border: none; padding: 14px 40px; border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; font-family: 'Prompt', sans-serif; transition: 0.3s; }
         .btn-next:hover { background: #2563eb; transform: scale(1.05); }
-        .btn-next:disabled { background: #334155; color: #94a3b8; cursor: not-allowed; transform: none; box-shadow: none; }
+        .btn-next:disabled { background: #334155; color: #94a3b8; cursor: not-allowed; transform: none; }
 
         /* Result Screen */
         #result-screen { display: none; width: 95%; max-width: 900px; margin: 40px auto; animation: slideUp 0.6s ease-out; }
@@ -69,19 +69,22 @@
         
         .summary-list { text-align: left; background: #0f172a; border-radius: 15px; padding: 25px; margin-top: 30px; }
         .group-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; padding-bottom: 8px; border-bottom: 1px solid #1e293b; }
-        .tag-pill { display: inline-block; background: #1e293b; border: 1px solid #334155; color: #f1f5f9; padding: 8px 16px; border-radius: 25px; font-size: 0.9rem; margin: 5px 5px 5px 0; transition: 0.2s; }
-        .tag-pill:hover { border-color: #3b82f6; background: rgba(59, 130, 246, 0.1); }
+        .tag-pill { display: inline-block; background: #1e293b; border: 1px solid #334155; color: #f1f5f9; padding: 8px 16px; border-radius: 25px; font-size: 0.9rem; margin: 5px 5px 5px 0; }
+        
+        /* กล่องพิเศษสำหรับหมวดเสื้อผ้า */
+        .gear-box { background: rgba(236, 72, 153, 0.05); border: 1px solid rgba(236, 72, 153, 0.3); }
+        .gear-title { color: #ec4899; border-bottom-color: rgba(236, 72, 153, 0.2); }
 
-        .btn-copy { background: #10b981; color: white; border: none; padding: 20px; width: 100%; border-radius: 15px; font-size: 1.3rem; font-weight: bold; cursor: pointer; font-family: 'Prompt', sans-serif; margin: 30px 0 15px 0; display: flex; align-items: center; justify-content: center; gap: 15px; transition: 0.3s; }
-        .btn-copy:hover { background: #059669; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2); }
+        .btn-copy { background: #10b981; color: white; border: none; padding: 20px; width: 100%; border-radius: 15px; font-size: 1.3rem; font-weight: bold; cursor: pointer; font-family: 'Prompt', sans-serif; margin: 30px 0 15px 0; transition: 0.3s; }
+        .btn-copy:hover { background: #059669; transform: translateY(-3px); }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="header" id="main-header">
         <h1 class="title">Ultimate Fetish Explorer</h1>
-        <p class="subtitle">แบบสำรวจรสนิยมและความชอบเบื้องลึกที่ละเอียดที่สุด<br>คลิกที่การ์ดเพื่อระบุบทบาทของคุณในแต่ละกิจกรรม (รุก/รับ/สลับ)</p>
+        <p class="subtitle">คลิกที่การ์ดเพื่อระบุบทบาทของคุณในกิจกรรมนั้นๆ<br>ระบบจะแยกคำถามให้อัตโนมัติสำหรับหมวดการกระทำ และหมวดเสื้อผ้า/อุปกรณ์</p>
     </div>
 
     <div class="container" id="selection-screen">
@@ -89,18 +92,19 @@
     </div>
 
     <div class="sticky-footer" id="footer-bar">
-        <div class="selection-info">บันทึกข้อมูลแล้ว: <span id="count" style="color: #3b82f6; font-size: 1.5rem; font-weight: 800;">0</span> หัวข้อ</div>
-        <button class="btn-next" id="btn-next" disabled onclick="calculateResults()">ประมวลผลตัวตน ➔</button>
+        <div class="selection-info">เลือกแล้ว: <span id="count" style="color: #3b82f6; font-size: 1.5rem; font-weight: 800;">0</span> หัวข้อ</div>
+        <button class="btn-next" id="btn-next" disabled onclick="calculateResults()">วิเคราะห์ผลลัพธ์ ➔</button>
     </div>
 
     <div class="modal-overlay" id="role-modal">
         <div class="modal-box">
             <div class="modal-title" id="m-title">ชื่อกิจกรรม</div>
-            <div class="modal-question">ในกิจกรรมนี้ คุณอยากอยู่ฝั่งไหน?</div>
-            <button class="btn-role btn-r-dom" onclick="setRole('dom')">⚔️ ฉันอยากเป็นคนทำ (Dom / Top)</button>
-            <button class="btn-role btn-r-sub" onclick="setRole('sub')">⛓️ ฉันอยากเป็นคนโดน (Sub / Bottom)</button>
-            <button class="btn-role btn-r-switch" onclick="setRole('switch')">⚖️ สลับได้ / ชอบทั้งคู่ (Switch)</button>
-            <button class="btn-role btn-r-remove" onclick="setRole('remove')">❌ ไม่ชอบกิจกรรมนี้ (ลบออก)</button>
+            <div class="modal-question" id="m-question">ในกิจกรรมนี้ คุณอยากอยู่ฝั่งไหน?</div>
+            
+            <button class="btn-role btn-r-top" id="btn-opt-1" onclick="setRole('opt1')">⚔️ อยากเป็นคนทำ (Dom)</button>
+            <button class="btn-role btn-r-bottom" id="btn-opt-2" onclick="setRole('opt2')">⛓️ อยากโดนกระทำ (Sub)</button>
+            <button class="btn-role btn-r-switch" id="btn-opt-3" onclick="setRole('opt3')">⚖️ ชอบทั้งคู่ (Switch)</button>
+            <button class="btn-role btn-r-remove" onclick="setRole('remove')">❌ ยกเลิกการเลือก</button>
         </div>
     </div>
 
@@ -123,21 +127,38 @@
         </div>
 
         <div class="result-card" style="padding: 30px;">
-            <h3 style="margin-top: 0; font-size: 1.5rem; text-align: center; border-bottom: 1px solid #334155; padding-bottom: 20px;">📌 เจาะลึกรายการ Fetish ที่คุณสนใจ</h3>
+            <h3 style="margin-top: 0; font-size: 1.5rem; text-align: center; border-bottom: 1px solid #334155; padding-bottom: 20px;">📌 สรุปกิจกรรมที่คุณสนใจ (Action Play)</h3>
             
             <div id="res-dom-group" class="summary-list">
-                <div class="group-title" style="color: #ef4444;">⚔️ รายการที่คุณชอบเป็นผู้กระทำ (Dom / Top)</div>
+                <div class="group-title" style="color: #ef4444;">⚔️ สิ่งที่คุณชอบเป็นผู้กระทำ (Dom)</div>
                 <div id="tags-dom"></div>
             </div>
-
             <div id="res-sub-group" class="summary-list">
-                <div class="group-title" style="color: #6366f1;">⛓️ รายการที่คุณชอบเป็นผู้ถูกกระทำ (Sub / Bottom)</div>
+                <div class="group-title" style="color: #6366f1;">⛓️ สิ่งที่คุณชอบเป็นผู้ถูกกระทำ (Sub)</div>
                 <div id="tags-sub"></div>
             </div>
-
             <div id="res-switch-group" class="summary-list">
-                <div class="group-title" style="color: #10b981;">⚖️ รายการที่คุณทำได้ทั้งสองบทบาท (Switch)</div>
+                <div class="group-title" style="color: #10b981;">⚖️ ทำได้ทั้งสองบทบาท (Switch)</div>
                 <div id="tags-switch"></div>
+            </div>
+
+            <div id="res-gear-group" class="summary-list gear-box" style="display: none;">
+                <h3 style="margin-top:0; text-align:center; color:#ec4899;">👗 ความชอบเรื่องชุดและอุปกรณ์ (Gear & Visuals)</h3>
+                
+                <div id="gear-partner-sec" style="margin-top: 20px; display: none;">
+                    <div class="group-title gear-title">👀 อยากเห็นพาร์ทเนอร์ใส่ / เป็นคนคุมอุปกรณ์</div>
+                    <div id="tags-gear-partner"></div>
+                </div>
+                
+                <div id="gear-self-sec" style="margin-top: 20px; display: none;">
+                    <div class="group-title gear-title" style="color: #8b5cf6; border-bottom-color: rgba(139, 92, 246, 0.2);">👕 อยากเป็นคนใส่เอง / ให้เขาใช้กับเรา</div>
+                    <div id="tags-gear-self"></div>
+                </div>
+                
+                <div id="gear-both-sec" style="margin-top: 20px; display: none;">
+                    <div class="group-title gear-title" style="color: #10b981; border-bottom-color: rgba(16, 185, 129, 0.2);">👯 ชอบทั้งคู่ / สลับกันใส่</div>
+                    <div id="tags-gear-both"></div>
+                </div>
             </div>
 
             <button class="btn-copy" onclick="copyProfile()">📋 คัดลอกโปรไฟล์ส่งให้พาร์ทเนอร์</button>
@@ -146,20 +167,25 @@
     </div>
 
 <script>
-    // ฐานข้อมูลแบบจัดเต็ม 11 หมวดหมู่
-    // ฐานข้อมูลฉบับ Ultimate จัดเต็ม 10 หมวดหมู่ 80 รายการ
+    // ไอดีของไอเทมที่เป็น "เสื้อผ้า / ภาพลักษณ์ / อุปกรณ์" ที่จะไม่ถูกนำไปคิดคะแนน Dom/Sub
+    // ไอดีของไอเทมที่เป็น "เสื้อผ้า / ภาพลักษณ์ / อุปกรณ์" ที่จะไม่ถูกนำไปคิดคะแนน Dom/Sub
+    const gearIds = ['k_sextoy', 'k_cloth', 'k_leather', 'k_nylon', 'k_latex', 'k_diaper', 'k_crossdress', 'k_cosplay', 'k_furry'];
+
+    // ฐานข้อมูลระดับ Ultimate (10 หมวดหมู่ / 79 รายการ) จัดเต็ม!
     const kinkDatabase = [
         {
             category: "👑 1. อำนาจและรูปแบบความสัมพันธ์ (Dynamics)",
             items: [
                 { id: "k_domsub", icon: "⚖️", title: "Dom / Sub", desc: "การควบคุมและการยอมจำนนพื้นฐาน" },
-                { id: "k_tpe", icon: "💍", title: "TPE (Total Power Exchange)", desc: "การมอบอำนาจชีวิตให้อีกฝ่ายดูแล 24/7" },
+                { id: "k_tpe", icon: "💍", title: "TPE (24/7)", desc: "มอบอำนาจการตัดสินใจในชีวิตให้อีกฝ่ายดูแล 24/7" },
+                { id: "k_ms", icon: "👑", title: "Master / slave", desc: "ความสัมพันธ์แบบนายทาสที่ลึกซึ้งและมีพันธะ" },
                 { id: "k_brat", icon: "🧸", title: "Bratty", desc: "ชอบดื้อรั้น ยั่วโมโห ท้าทายเพื่อให้ถูกปราบ" },
-                { id: "k_wrestling", icon: "🤼", title: "Wrestling / Play Fight", desc: "มวยปล้ำ ต่อสู้เพื่อชิงความเหนือกว่า ใครแพ้ตกเป็นซับ" },
-                { id: "k_findom", icon: "💸", title: "Findom", desc: "ความพึงพอใจจากการรีดไถเงิน หรือการเปย์เงิน" },
+                { id: "k_tamer", icon: "🦁", title: "Brat Tamer", desc: "เชี่ยวชาญการปราบพาร์ทเนอร์ที่ดื้อรั้น" },
                 { id: "k_primal", icon: "🐺", title: "Primal Play", desc: "สัญชาตญาณสัตว์ป่า เหยื่อและผู้ล่า กัดข่วน" },
                 { id: "k_gentle", icon: "🎀", title: "Gentle Dom", desc: "การควบคุมที่ใช้อำนาจอย่างอ่อนโยน เน้นการดูแล" },
-                { id: "k_praise", icon: "✨", title: "Praise Kink", desc: "เสพติดคำชมเชยเวลาทำตามคำสั่ง" }
+                { id: "k_service", icon: "☕", title: "Service Sub", desc: "มีความสุขกับการรับใช้ ทำงานบ้าน ดูแลพาร์ทเนอร์" },
+                { id: "k_praise", icon: "✨", title: "Praise Kink", desc: "เสพติดคำชมเชยเวลาทำตามคำสั่ง" },
+                { id: "k_findom", icon: "💸", title: "Findom", desc: "ความพึงพอใจจากการเปย์ หรือรีดไถเงิน" }
             ]
         },
         {
@@ -170,17 +196,18 @@
                 { id: "k_metal", icon: "🔗", title: "Metal & Cuffs", desc: "กุญแจมือ โซ่ หรือปลอกคอเหล็กแบบล็อคตาย" },
                 { id: "k_mummy", icon: "🌯", title: "Mummification", desc: "พันธนาการทั้งตัวด้วยแรปหรือเทป จนขยับไม่ได้" },
                 { id: "k_suspension", icon: "🪝", title: "Suspension", desc: "การถูกจับมัดแล้วห้อยแขวนขึ้นจากพื้น" },
-                { id: "k_enclosure", icon: "📦", title: "Enclosure", desc: "การขังในกรง กล่อง หรือที่แคบๆ" }
+                { id: "k_enclosure", icon: "📦", title: "Enclosure", desc: "การขังในกรง กล่อง หรือที่แคบๆ" },
+                { id: "k_predicament", icon: "⚖️", title: "Predicament Bondage", desc: "มัดแบบมีเงื่อนไข เช่น ถ้าขยับตัวจะยิ่งเจ็บ" }
             ]
         },
         {
-            category: "👁️ 3. สัมผัสเฉพาะทางและการตัดการรับรู้ (Sensory Play)",
+            category: "👁️ 3. สัมผัสและการตัดการรับรู้ (Sensory Play)",
             items: [
                 { id: "k_blind", icon: "🙈", title: "Blindfolding", desc: "ปิดตาเพื่อตัดการรับรู้ทางสายตา" },
                 { id: "k_gag", icon: "🤐", title: "Gagging", desc: "การอุดปากด้วยลูกตะกร้อ ผ้า หรืออุปกรณ์อื่นๆ" },
                 { id: "k_hood", icon: "🥷", title: "Sensory Deprivation", desc: "ใส่ฮู้ด ปิดกั้นทั้งแสงและเสียงโดยสมบูรณ์" },
                 { id: "k_tickle", icon: "🪶", title: "Tickle Torture", desc: "ทรมานด้วยการจั๊กจี้จนหัวเราะขาดใจ" },
-                { id: "k_scent", icon: "👃", title: "Scent Play", desc: "หลงใหลในกลิ่นน้ำหอม ฟีโรโมน หรือกลิ่นชุดชั้นใน" },
+                { id: "k_scent", icon: "👃", title: "Scent Play", desc: "หลงใหลในกลิ่นน้ำหอม ฟีโรโมน หรือกลิ่นเฉพาะ" },
                 { id: "k_sweat", icon: "💦", title: "Sweat / Musk", desc: "หลงใหลในกลิ่นกาย กลิ่นเหงื่อหลังออกกำลังกาย" },
                 { id: "k_temp", icon: "🧊", title: "Temperature Play", desc: "เล่นกับความรู้สึกร้อน (เทียน) หรือเย็น (น้ำแข็ง)" },
                 { id: "k_wax", icon: "🕯️", title: "Wax Play", desc: "การหยดน้ำตาเทียนอุ่นๆ ลงบนผิวหนัง" }
@@ -190,9 +217,11 @@
             category: "💥 4. ความเจ็บปวด (Impact Play)",
             items: [
                 { id: "k_spank", icon: "🖐️", title: "Spanking", desc: "การตีแปะๆ ด้วยมือเปล่า" },
-                { id: "k_whip", icon: "🪁", title: "Whipping / Flogging", desc: "การเฆี่ยนด้วยแส้สายเดียว หรือแส้หลายแฉก" },
                 { id: "k_slap", icon: "👋", title: "Slapping / Biting", desc: "การตบหน้า หยิก หรือกัดให้เกิดรอย" },
                 { id: "k_paddle", icon: "🏏", title: "Paddling", desc: "ใช้ไม้พาย หรือแส้สั้นตีที่ก้นและต้นขา" },
+                { id: "k_whip", icon: "🪁", title: "Whipping / Flogging", desc: "การเฆี่ยนด้วยแส้สายเดียว หรือแส้หลายแฉก" },
+                { id: "k_cane", icon: "🥢", title: "Caning", desc: "ตีด้วยไม้เรียวหวาย ให้เกิดรอยนูน" },
+                { id: "k_bastinado", icon: "🦶", title: "Bastinado", desc: "การตีลงโทษที่ฝ่าเท้า" },
                 { id: "k_clamp", icon: "🗜️", title: "Clamps", desc: "ใช้ที่หนีบตามจุดไวต่อความรู้สึก" }
             ]
         },
@@ -203,32 +232,37 @@
                 { id: "k_humiliate", icon: "😈", title: "Humiliation", desc: "จัดฉากให้อับอาย หรือบังคับให้ทำเรื่องน่าอาย" },
                 { id: "k_public", icon: "🌳", title: "Public Play", desc: "ความตื่นเต้นจากการทำกิจกรรมในที่สาธารณะ" },
                 { id: "k_cuckold", icon: "🐂", title: "Cuckolding", desc: "ความพึงพอใจที่เห็นพาร์ทเนอร์เพลย์กับผู้อื่น" },
-                { id: "k_blackmail", icon: "🤫", title: "Blackmail (Consensual)", desc: "การใช้ความลับหรือรูปหลุดมาสั่งการข่มขู่" },
+                { id: "k_blackmail", icon: "🤫", title: "Blackmail", desc: "การใช้ความลับหรือรูปหลุดมาสั่งการข่มขู่ (โดยสมยอม)" },
                 { id: "k_somno", icon: "💤", title: "Somnophilia", desc: "การมีกิจกรรมขณะพาร์ทเนอร์หลับ (โดยยินยอมล่วงหน้า)" },
-                { id: "k_cnc", icon: "🚫", title: "CNC", desc: "จำลองการฝืนใจ หรือข่มขืนโดยสมยอมล่วงหน้า" }
+                { id: "k_cnc", icon: "🚫", title: "CNC", desc: "จำลองการฝืนใจ หรือข่มขืนโดยสมยอมล่วงหน้า" },
+                { id: "k_fear", icon: "👻", title: "Fear Play", desc: "เล่นกับความกลัว เช่น ทำให้ตกใจ หรือขู่ให้กลัว" }
             ]
         },
         {
-            category: "🎭 6. บทบาทสมมติ (Roleplay & Alter Egos)",
+            category: "🎭 6. บทบาทสมมติและสถานการณ์ (Roleplay)",
             items: [
                 { id: "k_furniture", icon: "🪑", title: "Human Furniture", desc: "การใช้งานคนเป็นโต๊ะ เก้าอี้ หรือที่วางเท้า" },
-                { id: "k_cosplay", icon: "👮", title: "Cosplay", desc: "สวมชุดตัวละคร อนิเมะ หรืออาชีพต่างๆ" },
-                { id: "k_crossdress", icon: "👘", title: "Crossdress", desc: "การแต่งกายสลับเพศสภาพ หรือใส่ชุดชั้นในเพศตรงข้าม" },
-                { id: "k_furry", icon: "🐺", title: "Furry", desc: "สวมชุดสัตว์ปุกปุย หรือเล่นบทคาแรคเตอร์สัตว์" },
-                { id: "k_pet", icon: "🐕", title: "Pet Play", desc: "สวมบทบาทเป็นสัตว์เลี้ยง สวมปลอกคอ คลานสี่ขา" },
+                { id: "k_wrestling", icon: "🤼", title: "Wrestling / Fight", desc: "มวยปล้ำ ต่อสู้เพื่อชิงความเหนือกว่า" },
                 { id: "k_age", icon: "🍼", title: "Age Play", desc: "จำลองสถานะอายุที่ต่างกัน (Daddy/Mommy, Little)" },
-                { id: "k_medical", icon: "🩺", title: "Medical Play", desc: "บทบาทแพทย์ การตรวจร่างกาย ห้องพยาบาล" }
+                { id: "k_pet", icon: "🐕", title: "Pet Play", desc: "สวมบทบาทเป็นสัตว์เลี้ยง สวมปลอกคอ คลานสี่ขา" },
+                { id: "k_medical", icon: "🩺", title: "Medical Play", desc: "บทบาทแพทย์ การตรวจร่างกาย ห้องพยาบาล" },
+                { id: "k_pony", icon: "🐴", title: "Pony Play", desc: "สวมบทบาทเป็นม้า ใส่แร่งม้า ให้พาร์ทเนอร์ขี่" },
+                { id: "k_fauxcest", icon: "👨‍👧", title: "Taboo Roleplay", desc: "การสวมบทบาทเรื่องต้องห้าม (จำลองสถานการณ์เท่านั้น)" },
+                { id: "k_monster", icon: "🐙", title: "Monster Play", desc: "สวมบทบาทเป็นสัตว์ประหลาด เอเลี่ยน หรือมีหนวด" }
             ]
         },
         {
-            category: "👗 7. วัสดุและอุปกรณ์เครื่องแต่งกาย (Materials & Gear)",
+            category: "👗 7. เสื้อผ้า อุปกรณ์ และภาพลักษณ์ (Gear & Visuals)",
             items: [
                 { id: "k_sextoy", icon: "📱", title: "Sex Toys / Machines", desc: "การใช้อุปกรณ์สั่น หรือเครื่องจักรเข้ามาช่วย" },
                 { id: "k_cloth", icon: "👗", title: "Cloth Fetish", desc: "หลงใหลในชุดนอนไม่ได้นอน หรือชุดชั้นในลูกไม้" },
                 { id: "k_leather", icon: "🖤", title: "Leather Kink", desc: "หลงใหลกลิ่นและสัมผัสจากเครื่องหนัง สายรัดหนัง" },
                 { id: "k_nylon", icon: "👠", title: "Nylon / Pantyhose", desc: "คลั่งไคล้ถุงน่อง หรือการสวมใส่ถุงน่อง" },
                 { id: "k_latex", icon: "🩱", title: "Latex / Zentai", desc: "ใส่ชุดยางรัดรูป หรือชุดแนบเนื้อปิดทั้งตัว" },
-                { id: "k_diaper", icon: "🚼", title: "Diaper Play (ABDL)", desc: "การสวมใส่ผ้าอ้อม หรือถูกดูแลเหมือนทารก" }
+                { id: "k_diaper", icon: "🚼", title: "Diaper Play (ABDL)", desc: "การสวมใส่ผ้าอ้อม หรือถูกดูแลเหมือนทารก" },
+                { id: "k_crossdress", icon: "👘", title: "Crossdress", desc: "การแต่งกายข้ามเพศ หรือใส่ชุดชั้นในเพศตรงข้าม" },
+                { id: "k_cosplay", icon: "👮", title: "Cosplay / Uniform", desc: "สวมชุดตัวละคร อนิเมะ หรืออาชีพต่างๆ" },
+                { id: "k_furry", icon: "🐺", title: "Furry / Fursuit", desc: "สวมชุดสัตว์ปุกปุย หรือเล่นบทคาแรคเตอร์สัตว์" }
             ]
         },
         {
@@ -238,9 +272,9 @@
                 { id: "k_denial", icon: "🛑", title: "Orgasm Denial", desc: "สั่งกั๊ก ไม่ให้ถึงจุดสุดยอดเป็นเวลาหลายวัน" },
                 { id: "k_chastity", icon: "🔒", title: "Chastity", desc: "สวมอุปกรณ์กรง/เข็มขัด ล็อคอวัยวะเพศ" },
                 { id: "k_force", icon: "💦", title: "Forced Orgasm", desc: "บังคับให้เสร็จซ้ำๆ จนกว่าจะสั่งให้หยุด" },
+                { id: "k_ruined", icon: "🥀", title: "Ruined Orgasm", desc: "ทำให้ถึงจุดสุดยอดแต่รู้สึกไม่ฟิน หรือเจ็บปวดแทน" },
                 { id: "k_sounding", icon: "🥢", title: "Sounding", desc: "การสอดใส่วัตถุเข้าไปในท่อปัสสาวะ" },
-                { id: "k_cbt", icon: "🔨", title: "CBT", desc: "การเน้นทรมานที่อวัยวะเพศโดยตรง" },
-                { id: "k_pegging", icon: "🦵", title: "Pegging / Strap-on", desc: "ผู้หญิงใช้อุปกรณ์สอดใส่ผู้ชาย" }
+                { id: "k_cbt", icon: "🔨", title: "CBT", desc: "Cock and Ball Torture ทรมานอวัยวะเพศชาย" }
             ]
         },
         {
@@ -249,20 +283,23 @@
                 { id: "k_worship", icon: "🙏", title: "Body Worship", desc: "เทิดทูน บูชา จูบ เลีย ทุกสัดส่วนของร่างกาย" },
                 { id: "k_foot", icon: "👣", title: "Foot Fetish", desc: "หลงใหล ดูดเลียนิ้วเท้า หรือให้พาร์ทเนอร์เหยียบย่ำ" },
                 { id: "k_facesit", icon: "🪑", title: "Face Sitting", desc: "นั่งทับใบหน้าเพื่อความพึงพอใจหรือลงโทษ" },
-                { id: "k_spit", icon: "🤤", title: "Spitting", desc: "การบ้วนน้ำลายใส่ตัว หรือแลกน้ำลาย" },
+                { id: "k_spit", icon: "🤤", title: "Spitting / Drooling", desc: "การบ้วนน้ำลายใส่ตัว แลกน้ำลาย หรือทำน้ำลายยืด" },
                 { id: "k_water", icon: "🚿", title: "Golden Shower", desc: "Watersports เล่นกับปัสสาวะ" },
-                { id: "k_scat", icon: "💩", title: "Scat Play", desc: "Brown Shower เล่นกับอุจจาระ" }
+                { id: "k_scat", icon: "💩", title: "Scat Play", desc: "Brown Shower เล่นกับอุจจาระ" },
+                { id: "k_macro", icon: "🧍‍♂️", title: "Macro / Micro", desc: "จินตนาการเรื่องความต่างของขนาด (คนยักษ์-คนแคระ)" },
+                { id: "k_feeder", icon: "🍔", title: "Feederism", desc: "ความพึงพอใจในการขุนพาร์ทเนอร์ให้อ้วนขึ้น" }
             ]
         },
         {
-            category: "⚠️ 10. ขีดจำกัดความเสี่ยง (Edge Play)",
+            category: "⚠️ 10. ร่องรอยและขีดจำกัดความเสี่ยง (Edge Play)",
             items: [
                 { id: "k_mark", icon: "💋", title: "Marking / Hickeys", desc: "ทำรอยช้ำ กัด หรือดูด เพื่อแสดงความเป็นเจ้าของ" },
                 { id: "k_breath", icon: "😮‍💨", title: "Breath Play", desc: "บีบคอ หรือจำกัดอากาศหายใจ (เสี่ยงสูง)" },
                 { id: "k_blood", icon: "🩸", title: "Blood / Knife Play", desc: "เล่นกับของมีคม กรีด หรือทำให้เลือดออก" },
                 { id: "k_needle", icon: "📌", title: "Needle Play", desc: "แทงเข็มผ่านผิวหนังตื้นๆ เพื่อความสวยงามหรือเจ็บปวด" },
-                { id: "k_fire", icon: "🔥", title: "Fire Play", desc: "การเล่นกับเปลวไฟ หรือลนไฟบนผิวหนัง" },
-                { id: "k_waterboard", icon: "🌊", title: "Waterboarding", desc: "การกดน้ำ หรือราดน้ำจำลองการจมน้ำ" }
+                { id: "k_fire", icon: "🔥", title: "Fire Play", desc: "การเล่นกับเปลวไฟ ลนไฟ หรือพ่นไฟ" },
+                { id: "k_waterboard", icon: "🌊", title: "Waterboarding", desc: "การกดน้ำ หรือราดน้ำจำลองการจมน้ำ" },
+                { id: "k_brand", icon: "♨️", title: "Branding", desc: "นาบเหล็กร้อนประทับตราลงบนผิวให้เป็นแผลเป็น" }
             ]
         }
     ];
@@ -270,6 +307,7 @@
     let userChoices = {}; 
     let itemDataMap = {}; 
     let currentId = null;
+    let isCurrentGear = false;
     let shareText = "";
 
     function renderBoard() {
@@ -293,30 +331,59 @@
 
     function openRoleModal(id, title) {
         currentId = id;
+        isCurrentGear = gearIds.includes(id);
+        
         document.getElementById('m-title').innerText = title;
+        
+        // Smart Modal Logic
+        const btn1 = document.getElementById('btn-opt-1');
+        const btn2 = document.getElementById('btn-opt-2');
+        const btn3 = document.getElementById('btn-opt-3');
+        const question = document.getElementById('m-question');
+
+        if (isCurrentGear) {
+            question.innerText = "คุณอยากมีส่วนร่วมกับเสื้อผ้า/อุปกรณ์นี้แบบไหน?";
+            btn1.innerHTML = "👀 อยากเห็นพาร์ทเนอร์ใส่";
+            btn2.innerHTML = "👕 ฉันอยากเป็นคนใส่เอง";
+            btn3.innerHTML = "👯 ชอบทั้งคู่ / สลับกันใส่";
+        } else {
+            question.innerText = "ในกิจกรรมนี้ คุณอยากอยู่ฝั่งไหน?";
+            btn1.innerHTML = "⚔️ ฉันอยากเป็นคนทำ (Dom / Top)";
+            btn2.innerHTML = "⛓️ ฉันอยากเป็นคนโดน (Sub / Bottom)";
+            btn3.innerHTML = "⚖️ สลับได้ / ชอบทั้งคู่ (Switch)";
+        }
+        
         document.getElementById('role-modal').style.display = 'flex';
     }
 
-    function setRole(role) {
+    function setRole(choice) {
         const card = document.getElementById(`card-${currentId}`);
         const badge = document.getElementById(`badge-${currentId}`);
-        card.classList.remove('role-dom', 'role-sub', 'role-switch');
+        
+        // ลบคลาสเก่าทั้งหมด
+        card.classList.remove('role-dom', 'role-sub', 'role-switch', 'role-partner', 'role-self', 'role-both');
 
-        if (role === 'remove') {
+        if (choice === 'remove') {
             delete userChoices[currentId];
+            badge.style.display = 'none';
         } else {
-            userChoices[currentId] = role;
-            card.classList.add(`role-${role}`);
-            badge.innerText = role === 'dom' ? "⚔️ รุก" : (role === 'sub' ? "⛓️ รับ" : "⚖️ สลับ");
+            let roleStr = choice === 'opt1' ? 'dom' : (choice === 'opt2' ? 'sub' : 'switch');
+            
+            userChoices[currentId] = { role: roleStr, isGear: isCurrentGear };
+            
+            if (isCurrentGear) {
+                card.classList.add(choice === 'opt1' ? 'role-partner' : (choice === 'opt2' ? 'role-self' : 'role-both'));
+                badge.innerText = choice === 'opt1' ? "👀 แฟนใส่" : (choice === 'opt2' ? "👕 เราใส่" : "👯 ทั้งคู่");
+            } else {
+                card.classList.add(`role-${roleStr}`);
+                badge.innerText = choice === 'opt1' ? "⚔️ รุก" : (choice === 'opt2' ? "⛓️ รับ" : "⚖️ สลับ");
+            }
+            badge.style.display = 'block';
         }
+        
         document.getElementById('role-modal').style.display = 'none';
-        updateUI();
-    }
-
-    function updateUI() {
-        const count = Object.keys(userChoices).length;
-        document.getElementById('count').innerText = count;
-        document.getElementById('btn-next').disabled = count === 0;
+        document.getElementById('count').innerText = Object.keys(userChoices).length;
+        document.getElementById('btn-next').disabled = Object.keys(userChoices).length === 0;
     }
 
     function calculateResults() {
@@ -328,32 +395,56 @@
 
         let d = 0, s = 0;
         let domList = [], subList = [], switchList = [];
+        let gearPartner = [], gearSelf = [], gearBoth = [];
 
         for (let id in userChoices) {
-            let role = userChoices[id];
+            let data = userChoices[id];
             let item = itemDataMap[id];
             let tag = `<span class="tag-pill">${item.icon} ${item.title}</span>`;
-            
-            if(role === 'dom') { d += 2; domList.push(`- ${item.title}`); document.getElementById('tags-dom').innerHTML += tag; }
-            else if(role === 'sub') { s += 2; subList.push(`- ${item.title}`); document.getElementById('tags-sub').innerHTML += tag; }
-            else { d += 1; s += 1; switchList.push(`- ${item.title}`); document.getElementById('tags-switch').innerHTML += tag; }
+            let text = `- ${item.title}`;
+
+            if (data.isGear) {
+                if(data.role === 'dom') gearPartner.push({html: tag, txt: text});
+                else if(data.role === 'sub') gearSelf.push({html: tag, txt: text});
+                else gearBoth.push({html: tag, txt: text});
+            } else {
+                if(data.role === 'dom') { d += 2; domList.push({html: tag, txt: text}); }
+                else if(data.role === 'sub') { s += 2; subList.push({html: tag, txt: text}); }
+                else { d += 1; s += 1; switchList.push({html: tag, txt: text}); }
+            }
         }
 
-        if(domList.length === 0) document.getElementById('res-dom-group').style.display = 'none';
-        if(subList.length === 0) document.getElementById('res-sub-group').style.display = 'none';
-        if(switchList.length === 0) document.getElementById('res-switch-group').style.display = 'none';
+        // Render Action Play
+        document.getElementById('tags-dom').innerHTML = domList.map(i=>i.html).join('');
+        document.getElementById('tags-sub').innerHTML = subList.map(i=>i.html).join('');
+        document.getElementById('tags-switch').innerHTML = switchList.map(i=>i.html).join('');
+        
+        if(!domList.length) document.getElementById('res-dom-group').style.display = 'none';
+        if(!subList.length) document.getElementById('res-sub-group').style.display = 'none';
+        if(!switchList.length) document.getElementById('res-switch-group').style.display = 'none';
 
+        // Render Gear Play
+        let hasGear = gearPartner.length || gearSelf.length || gearBoth.length;
+        if(hasGear) {
+            document.getElementById('res-gear-group').style.display = 'block';
+            if(gearPartner.length) { document.getElementById('gear-partner-sec').style.display = 'block'; document.getElementById('tags-gear-partner').innerHTML = gearPartner.map(i=>i.html).join(''); }
+            if(gearSelf.length) { document.getElementById('gear-self-sec').style.display = 'block'; document.getElementById('tags-gear-self').innerHTML = gearSelf.map(i=>i.html).join(''); }
+            if(gearBoth.length) { document.getElementById('gear-both-sec').style.display = 'block'; document.getElementById('tags-gear-both').innerHTML = gearBoth.map(i=>i.html).join(''); }
+        }
+
+        // Calculate Percentages
         let total = d + s;
+        if(total === 0) total = 1; // กันบัคถ้าเลือกแต่เสื้อผ้าอย่างเดียว
         let dPct = Math.round((d / total) * 100);
         let sPct = Math.round((s / total) * 100);
 
-        let persona = "The Versatile Switch";
-        let desc = "คุณคือผู้เล่นที่มีความยืดหยุ่นสูง สามารถปรับเปลี่ยนบทบาทได้ตามความต้องการและบรรยากาศของการเพลย์";
-
-        if(dPct >= 75) { persona = "Absolute Dominant"; desc = "คุณคือผู้นำเกมที่ชัดเจน ชื่นชอบการเป็นผู้ควบคุมและกำหนดทิศทางของทุกความสัมพันธ์"; }
-        else if(sPct >= 75) { persona = "Absolute Submissive"; desc = "คุณคือผู้มอบกายถวายใจ ชื่นชอบการสละอำนาจและยอมจำนนเพื่อรับประสบการณ์ที่ผู้อื่นมอบให้"; }
-        else if(dPct > 55) { persona = "Dominant-Leaning Switch"; desc = "คุณชอบเป็นฝ่ายคุมเกมเป็นหลัก แต่ในบางโอกาสก็ยินดีที่จะเป็นฝ่ายรับบ้าง"; }
-        else if(sPct > 55) { persona = "Submissive-Leaning Switch"; desc = "คุณชอบความเป็นฝ่ายรับและผู้ตามเป็นหลัก แต่ก็พร้อมจะลุกขึ้นมาคุมเกมในบางจังหวะ"; }
+        let persona = "The Versatile Explorer";
+        let desc = "คุณมีความยืดหยุ่นสูง หรือกำลังสนุกกับการสำรวจรสนิยมใหม่ๆ โดยไม่ยึดติดกับบทบาทตายตัว";
+        if (d === 0 && s === 0 && hasGear) { persona = "Gear & Visual Lover"; desc = "คุณมีความหลงใหลในด้านภาพลักษณ์ เสื้อผ้า และอุปกรณ์เป็นพิเศษ"; dPct = 0; sPct = 0;}
+        else if(dPct >= 75) { persona = "Absolute Dominant"; desc = "คุณคือผู้นำเกมที่ชัดเจน ชื่นชอบการเป็นผู้ควบคุม"; }
+        else if(sPct >= 75) { persona = "Absolute Submissive"; desc = "คุณชื่นชอบการสละอำนาจและยอมจำนนเพื่อรับประสบการณ์"; }
+        else if(dPct > 55) { persona = "Dominant-Leaning Switch"; desc = "คุณชอบเป็นฝ่ายคุมเกมเป็นหลัก แต่ยินดีเป็นฝ่ายรับบ้าง"; }
+        else if(sPct > 55) { persona = "Submissive-Leaning Switch"; desc = "คุณชอบเป็นฝ่ายรับเป็นหลัก แต่พร้อมคุมเกมในบางจังหวะ"; }
 
         document.getElementById('res-persona').innerText = persona;
         document.getElementById('res-desc').innerText = desc;
@@ -366,10 +457,16 @@
         }, 200);
 
         // Build Share Text
-        shareText = `My Fetish Profile:\n👑 Persona: ${persona}\n📊 Ratio: Dom ${dPct}% | Sub ${sPct}%\n\n`;
-        if(domList.length) shareText += `⚔️ Dom Items:\n${domList.join('\n')}\n\n`;
-        if(subList.length) shareText += `⛓️ Sub Items:\n${subList.join('\n')}\n\n`;
-        if(switchList.length) shareText += `⚖️ Switch Items:\n${switchList.join('\n')}`;
+        shareText = `My BDSM Profile:\n👑 Persona: ${persona}\n📊 Ratio: Dom ${dPct}% | Sub ${sPct}%\n\n`;
+        if(domList.length) shareText += `⚔️ Action (Top):\n${domList.map(i=>i.txt).join('\n')}\n\n`;
+        if(subList.length) shareText += `⛓️ Action (Bottom):\n${subList.map(i=>i.txt).join('\n')}\n\n`;
+        if(switchList.length) shareText += `⚖️ Action (Switch):\n${switchList.map(i=>i.txt).join('\n')}\n\n`;
+        if(hasGear) {
+            shareText += `👗 Gear & Visuals Preferences:\n`;
+            if(gearPartner.length) shareText += `👀 ให้พาร์ทเนอร์ใส่: ${gearPartner.map(i=>i.txt.replace('- ','')).join(', ')}\n`;
+            if(gearSelf.length) shareText += `👕 ตัวเราใส่เอง: ${gearSelf.map(i=>i.txt.replace('- ','')).join(', ')}\n`;
+            if(gearBoth.length) shareText += `👯 ใส่ทั้งคู่: ${gearBoth.map(i=>i.txt.replace('- ','')).join(', ')}\n`;
+        }
     }
 
     function copyProfile() {
